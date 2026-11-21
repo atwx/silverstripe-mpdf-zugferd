@@ -1,0 +1,7 @@
+---
+Name: atwx-mpdf-zugferd
+After: atwx-mpdf
+---
+Atwx\Mpdf\MpdfRenderer:
+  extensions:
+    - Atwx\MpdfZugferd\Extensions\ZugferdRendererExtension
