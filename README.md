@@ -1,8 +1,22 @@
-# atwx/silverstripe-mpdf-zugferd
+# atwx/silverstripe-zugferd
 
-Add-on for [atwx/silverstripe-mpdf](https://github.com/atwx/silverstripe-mpdf): embeds ZUGFeRD / Factur-X /
-XRechnung XML into the rendered PDF and turns it into a PDF/A-3 hybrid e-invoice
-(via `horstoeko/zugferd`'s `ZugferdDocumentPdfMerger`).
+Embeds ZUGFeRD / Factur-X / XRechnung XML into a PDF and turns it into a PDF/A-3
+hybrid e-invoice (via `horstoeko/zugferd`'s `ZugferdDocumentPdfMerger`). Works with
+PDFs from any source – mPDF, headless Chrome, wkhtmltopdf, uploads.
+
+Building the XML stays in your project (fill a `ZugferdDocumentBuilder` from your
+invoice model); this module does the embedding and its configuration.
+
+```php
+use Atwx\Zugferd\ZugferdPdf;
+
+$pdf = ZugferdPdf::create()->embed($pdf, $builder);   // builder, XML string or XML file path
+```
+
+## With atwx/silverstripe-mpdf
+
+When [atwx/silverstripe-mpdf](https://github.com/atwx/silverstripe-mpdf) is installed,
+its renderer embeds the e-invoice by itself:
 
 ```php
 $builder = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_XRECHNUNG_3);
@@ -15,12 +29,10 @@ $pdf = Injector::inst()->get(PdfRenderer::class)->renderTemplate('Invoice_pdf', 
 ]);
 ```
 
-Without the renderer, any PDF data works: `ZugferdPdf::create()->embed($pdf, $xml)`.
-
 ## Configuration
 
 ```yaml
-Atwx\MpdfZugferd\ZugferdPdf:
+Atwx\Zugferd\ZugferdPdf:
   creator_tool: 'My App'          # added to the PDF creator
   relationship_type: ''           # Data (default) | Alternative | Source
   deterministic: false            # reproducible output, e.g. for tests
@@ -33,3 +45,9 @@ Atwx\MpdfZugferd\ZugferdPdf:
 ```
 
 Extension hook on `ZugferdPdf`: `updateMerger($merger, $options)`.
+
+## Tests
+
+```bash
+SS_PHPUNIT_FLUSH=1 php phpunit.phar --configuration phpunit.xml.dist
+```

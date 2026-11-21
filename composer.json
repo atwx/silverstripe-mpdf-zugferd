@@ -1,23 +1,36 @@
 {
-    "name": "atwx/silverstripe-mpdf-zugferd",
-    "description": "Add-on for atwx/silverstripe-mpdf: embed ZUGFeRD / Factur-X / XRechnung XML into rendered PDFs (PDF/A-3)",
+    "name": "atwx/silverstripe-zugferd",
+    "description": "Embed ZUGFeRD / Factur-X / XRechnung XML into PDFs (PDF/A-3) in Silverstripe; optional integration with atwx/silverstripe-mpdf",
     "type": "silverstripe-vendormodule",
-    "keywords": ["silverstripe", "pdf", "mpdf", "zugferd", "xrechnung", "factur-x", "e-invoice"],
+    "keywords": [
+        "silverstripe",
+        "pdf",
+        "zugferd",
+        "xrechnung",
+        "factur-x",
+        "e-invoice",
+        "mpdf"
+    ],
     "license": "BSD-3-Clause",
     "require": {
         "php": "^8.3",
         "silverstripe/framework": "^6.0",
-        "atwx/silverstripe-mpdf": "^1.0",
         "horstoeko/zugferd": "^1.0"
+    },
+    "require-dev": {
+        "atwx/silverstripe-mpdf": "^1.0"
+    },
+    "suggest": {
+        "atwx/silverstripe-mpdf": "Render templates with mPDF; the option 'zugferd' then embeds the e-invoice automatically"
     },
     "autoload": {
         "psr-4": {
-            "Atwx\\MpdfZugferd\\": "src/"
+            "Atwx\\Zugferd\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Atwx\\MpdfZugferd\\Tests\\": "tests/php/"
+            "Atwx\\Zugferd\\Tests\\": "tests/php/"
         }
     },
     "minimum-stability": "dev",

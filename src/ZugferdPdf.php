@@ -1,6 +1,6 @@
 <?php
 
-namespace Atwx\MpdfZugferd;
+namespace Atwx\Zugferd;
 
 use horstoeko\zugferd\ZugferdDocumentBuilder;
 use horstoeko\zugferd\ZugferdDocumentPdfMerger;
@@ -13,7 +13,8 @@ use SilverStripe\Core\Injector\Injectable;
  * Embeds ZUGFeRD / Factur-X / XRechnung XML into a PDF, producing a PDF/A-3
  * hybrid e-invoice (via horstoeko/zugferd's ZugferdDocumentPdfMerger).
  *
- * Works on any PDF data; together with atwx/silverstripe-mpdf it is applied
+ * Works on any PDF data, whichever tool produced it (mPDF, headless Chrome,
+ * wkhtmltopdf, uploads). With atwx/silverstripe-mpdf installed it is applied
  * automatically when the renderer gets the option `zugferd`.
  */
 class ZugferdPdf

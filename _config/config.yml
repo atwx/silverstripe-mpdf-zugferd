@@ -1,7 +1,10 @@
 ---
-Name: atwx-mpdf-zugferd
+Name: atwx-zugferd-mpdf
 After: atwx-mpdf
+Only:
+  classexists: 'Atwx\Mpdf\MpdfRenderer'
 ---
+# ZugferdPdf works on its own; this hooks it into atwx/silverstripe-mpdf when installed.
 Atwx\Mpdf\MpdfRenderer:
   extensions:
-    - Atwx\MpdfZugferd\Extensions\ZugferdRendererExtension
+    - Atwx\Zugferd\Extensions\ZugferdRendererExtension

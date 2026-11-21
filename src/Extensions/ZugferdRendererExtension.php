@@ -1,8 +1,8 @@
 <?php
 
-namespace Atwx\MpdfZugferd\Extensions;
+namespace Atwx\Zugferd\Extensions;
 
-use Atwx\MpdfZugferd\ZugferdPdf;
+use Atwx\Zugferd\ZugferdPdf;
 use SilverStripe\Core\Extension;
 
 /**
